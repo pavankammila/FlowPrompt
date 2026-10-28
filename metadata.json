@@ -1,0 +1,6 @@
+{
+  "name": "FLOWPROMPT",
+  "description": "A minimal, distraction-free teleprompter and script studio for presenters, creators, and speakers.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

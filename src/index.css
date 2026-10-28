@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "Source Serif 4", Georgia, Cambria, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-fp-orange: #FF6A00;
+  --color-fp-orange-highlight: #FF8A32;
+  --color-fp-orange-hover: #E65F00;
+  --color-fp-charcoal: #171717;
+  --color-fp-charcoal-secondary: #242424;
+  --color-fp-offwhite: #FAF9F6;
+  --color-fp-muted: #77736E;
+}
+
+/* Centralized Brand & Theme Design Tokens */
+:root {
+  --fp-orange: #FF6A00;
+  --fp-orange-highlight: #FF8A32;
+  --fp-orange-hover: #E65F00;
+  --fp-charcoal-primary: #171717;
+  --fp-charcoal-secondary: #242424;
+  --fp-offwhite: #FAF9F6;
+  --fp-white: #FFFFFF;
+  --fp-muted: #77736E;
+
+  /* Active Light Theme Surface & Text Tokens */
+  --bg-canvas: #FAF9F6;
+  --bg-toolbar: #F3F1EC;
+  --bg-elevated: #FFFFFF;
+  --bg-subtle: #F5F3EE;
+  --bg-control: #EAE7E0;
+  --text-primary: #171717;
+  --text-secondary: #242424;
+  --text-muted: #77736E;
+  --border-subtle: #E5E2DC;
+  --border-strong: #D4D0C8;
+  --logo-wordmark: #171717;
+  color-scheme: light;
+}
+
+.dark {
+  /* Active Dark Theme Surface & Text Tokens */
+  --bg-canvas: #111111;
+  --bg-toolbar: #161616;
+  --bg-elevated: #1A1A1A;
+  --bg-subtle: #202020;
+  --bg-control: #262626;
+  --text-primary: #FAF9F6;
+  --text-secondary: #E2E0D8;
+  --text-muted: #96928C;
+  --border-subtle: #262626;
+  --border-strong: #363636;
+  --logo-wordmark: #FAF9F6;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Coordinated 250ms ease-in-out theme transitions across surfaces, borders, and text */
+  body,
+  header,
+  footer,
+  main,
+  aside,
+  section,
+  nav,
+  div,
+  button,
+  input,
+  textarea,
+  select,
+  span,
+  kbd {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow, opacity, transform;
+    transition-duration: 240ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Respect prefers-reduced-motion by disabling nonessential transitions and animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Subtle custom scrollbars for editor and panels */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(119, 115, 110, 0.28);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(119, 115, 110, 0.48);
+}
+
+/* Hide scrollbar inside teleprompter stage when desired */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
